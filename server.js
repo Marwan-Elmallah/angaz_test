@@ -1,7 +1,7 @@
 const express = require("express")
 const path = require("path")
 const initConnection = require("./DB/connection")
-const { userRoutes, adminRoutes } = require("./routes")
+const { userRoutes, adminRoutes, categRoutes } = require("./routes")
 const app = express()
 require("dotenv").config()
 
@@ -12,7 +12,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
 initConnection()
 app.use(express.json())
-app.use(userRoutes, adminRoutes)
+app.use(userRoutes, adminRoutes, categRoutes)
 
 
 
