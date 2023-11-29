@@ -7,7 +7,7 @@ const CryptoJS = require("crypto-js");
 const allUser = async (req, res) => {
     try {
         const { start, qty } = req.query
-        const users = await userModel.find({}).select("-password").skip(start).limit(qty)
+        const users = await userModel.find({}).select(["-password", "-bankAcc", "-oldId"]).skip(start).limit(qty)
         res.json({ message: "Done", users })
     } catch (error) {
         res.status(500).json({ message: "Error To Get All Users", error })
